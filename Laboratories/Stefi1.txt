@@ -1,0 +1,51 @@
+# newConferenceEdition() used by a SteeringCommitteeMember							
+# uploadAccountData() used by PCMember or ConferenceChair or ConferenceCoChair
+# postponeDeadline() used by ConferenceChair or ConferenceCochair
+# accountLogin() used by SteeringCommitteeMember,PCMember,ConferenceChair,ConferenceCoChair,Submitter
+# accountRegister() used by Submitter ( the others will somehow use the uploadAccountData() , without needing to register using this function )
+# validateAccount() used by ( i have no idea who should validate accounts , someone with a certain level of authority i guess )
+# submitAbstract() used by Submitter
+# submitMetaInfo() used by Submitter
+# submitFullPaper() ( if allowed ) used by Submitter
+# checkAbstractDeadline() used by Submitter
+# checkProposalDeadline() used by Submitter
+# uploadNewAbstract() used by Submitter
+# uploadNewPaper() used by Submitter
+# displayAbstracts() used by PCMember
+# displayPapers() used by PCMember
+# setReviewPaper() used by PCMember
+# setEvaluatePaper() used by PCMember
+# setRefusePaper() used by PCMember
+# closeBiddingProcess() used by Program ( automatically done after deadline has passed )
+# assignPaperToReviewer() used by ConferenceChair or ConferenceCoChair
+# checkIfPaperRefused() used by ConferenceChair or ConferenceCoChair ( while asigning the papers )
+# checkNumberOfPaperReviewers() used by ConferenceChair or ConferenceCoChair ( while asigning the papers )
+# submitQualifierForPaper() used by Reviewer ( not especially a separate class , but maybe a class that has a boolean isReviewer set to true and has permission to review that particular paper )
+# checkPaperEvaluation() used by Program ( after all reviewers submitted their qualifiers )
+# contradictoryEvaluation() used by a checkPaperEvaluation() call ( if needed )
+# acceptContradictoryPaper() used by ConferenceChair
+# denyContradictoryPaper() used by ConferenceChair
+# addVetoReviewer() used by ConferenceChair
+# addRecommendationToProposal() used by Reviewer
+# checkEvaluationSubmitted() used by Reviewer 
+# displayAllEvaluationsForPaper() used by Reviewer if the checkEvaluationSubmitted() returns positive result
+# checkSubmissionsStatus() used by Program
+# sendEmailResults() used by Program after checkSubmissionsStatus() call
+# publishPaper() used by ( someone with authority , i don't think this should be done automatically or errors in papers might get through )
+# displayPaperRecommendations() used by Submitter
+# updatePaper() used by Submitter
+# submitAuthorPaper() used by Author ( PCMember )
+# updatePermissions() used by Program after a PCMember submits his own paper ( this will disable the PCMember from seeing info about own paper , but will continue to see info about other papers )
+# addSection() used by ( someone with high authority idk who )
+# assignSessionChair() used by ( someone with high authority idk who )
+# newSpeaker() used by Program ( gives an author the extra permissions of a speaker , should they be required )
+# assignSectionToPerson() used by ( someone with high authority idk who ) ( not sure if we will need to know who attends what section , but we might need it )
+# newSectionAttendance() used by Participant ( a chair , speaker or listener )
+# assignRoomToSection() used by Program ( not sure if this should be done , but maybe )
+# checkChairIsSpeaker() used by Program
+# uploadPresentationContent() used by Speaker
+
+
+
+
+

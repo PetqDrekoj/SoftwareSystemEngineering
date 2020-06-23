@@ -1,0 +1,165 @@
+Conference participants can be:
+SessionChairs, Speakers or Listeners.
+
+# newConferenceEdition() used by a SteeringCommitteeMember
+
+SteeringCommittee ~ organize conference edition
+			info about conference -> site ( name of the conference,
+									the interval in which the event will take place, the "Call for papers", the deadlines, the Program
+									Committee, the conference sections and program )
+									
+# uploadAccountData() used by PCMember or ConferenceChair or ConferenceCoChair
+
+PC members + conference chair/co-chair -> uploads information about their name, affiliation, email address, their personal web-page,
+										their username for the CMS and the password for accessing the information about the conference.
+
+# postponeDeadline() used by ConferenceChair or ConferenceCochair
+										
+The chair or one of co-chairs -> have the permission to change deadlines by postponing them to later data.
+
+PHASE 1 :
+
+# accountLogin() used by SteeringCommitteeMember,PCMember,ConferenceChair,ConferenceCoChair,Submitter
+
+Login
+
+# accountRegister() used by Submitter ( the others will somehow use the uploadAccountData() , without needing to register using this function )
+Register
+
+
+Submitter makes account (the name, affiliation, email address) -> account has to be validated -> submit the abstract and fulfills the meta-information required
+			Depending on the conference it is possible to upload also the full paper
+# validateAccount() used by ( i have no idea who should validate accounts , someone with a certain level of authority i guess )
+# submitAbstract() used by Submitter
+# submitMetaInfo() used by Submitter
+# submitFullPaper() ( if allowed ) used by Submitter
+			
+			
+Uploading proposals can be done before the deadline mentioned on the conference site and on the "Call for papers".
+
+# checkAbstractDeadline() used by Submitter
+# checkProposalDeadline() used by Submitter
+
+It is possible to have two different deadlines: one for the abstract and another for the proposal.
+
+# uploadNewAbstract() used by Submitter
+# uploadNewPaper() used by Submitter
+
+Until each deadline, users may upload new versions both for the abstract and the paper.
+
+
+PHASE 2 :
+PC members are required to bid the proposals.
+
+# displayAbstracts() used by PCMember
+# displayPapers() used by PCMember
+# setReviewPaper() used by PCMember
+# setEvaluatePaper() used by PCMember
+# setRefusePaper() used by PCMember
+
+Each PC member has to
+do a brief analyze of abstracts or papers in order say if they are pleased to review some papers,
+or if they could evaluate some papers, or if they refuse to evaluate other papers.
+
+# closeBiddingProcess() used by Program ( automatically done after deadline has passed )
+# assignPaperToReviewer() used by ConferenceChair or ConferenceCoChair
+
+Once the bidding process closed (there is a deadline for bidding), the conference chair or co-chairs assign
+to each reviewer the papers required to be evaluated.
+
+# checkIfPaperRefused() used by ConferenceChair or ConferenceCoChair ( while asigning the papers )
+
+By default any reviewer do not receive for evaluation a paper refused in the bidding phase.
+
+# checkNumberOfPaperReviewers() used by ConferenceChair or ConferenceCoChair ( while asigning the papers )
+
+At least two different reviewers have to evaluate each paper.
+Usually there are three reviewers(evaluators) for each paper but depending on the conference level there can be also 4 reviewers.
+
+# submitQualifierForPaper() used by Reviewer ( not especially a separate class , but maybe a class that has a boolean isReviewer set to true and has permission to review that particular paper )
+
+The result of each reviewer is one of the followings qualifiers: strong accept, accept, weak accept, borderline paper, weak reject, reject and strong reject.
+
+# checkPaperEvaluation() used by Program ( after all reviewers submitted their qualifiers )
+
+The papers whose evaluation do not contains any level of reject are accepted by default.
+Also, the papers not containing any accept will be rejected.
+
+# contradictoryEvaluation() used by a checkPaperEvaluation() call ( if needed )
+
+In case of papers having contradictory evaluations the chair/co-chairs request reviewers to discuss in order to get closer evaluations.
+
+# acceptContradictoryPaper() used by ConferenceChair
+# denyContradictoryPaper() used by ConferenceChair
+# addVetoReviewer() used by ConferenceChair
+
+If this will not be possible, is up to the chair to decide if another new evaluation from a different reviewer will be required or if the paper will be rejected or accepted.
+
+# addRecommendationToProposal() used by Reviewer
+
+The evaluation qualifier is justified by means of a set of recommendations that each reviewer attach to evaluated proposals.
+
+# checkEvaluationSubmitted() used by Reviewer 
+# displayAllEvaluationsForPaper() used by Reviewer if the checkEvaluationSubmitted() returns positive result
+
+Once a reviewer uploads the results of its evaluation, she/he will see the other evaluations of the same paper delivered by other reviewers.
+
+# checkSubmissionsStatus() used by Program
+# sendEmailResults() used by Program after checkSubmissionsStatus() call
+
+After deciding about the acceptance or not for all submissions, the authors are announced by email about their results.
+
+# publishPaper() used by ( someone with authority , i don't think this should be done automatically or errors in papers might get through )
+
+Only papers accepted and presented on the conference will be published.
+
+# displayPaperRecommendations() used by Submitter
+# updatePaper() used by Submitter
+
+After receiving the acceptance decision, authors are invited to improve their accepted papers taking into account reviewers recommendations.
+
+# submitAuthorPaper() used by Author ( PCMember )
+
+PC members excepting the chair/co-chairs can submit proposals by logging as authors.
+
+# updatePermissions() used by Program after a PCMember submits his own paper ( this will disable the PCMember from seeing info about own paper , but will continue to see info about other papers )
+
+In this case, they have not the right to see neither which are the reviewers of their paper nor the comments between reviewers.
+
+PHASE 3 :
+conference activities - mainly papers' presentation.
+
+# addSection() used by ( someone with high authority idk who )
+
+Depending on the number of participants and of accepted papers, the conference is structured on different sections, some of them organized in parallel.
+
+# assignSessionChair() used by ( someone with high authority idk who )
+
+Each section is supervised by a session chair which in the most cases is a member of the Program Committee (PC member) including the chair/co-chairs.
+
+# newSpeaker() used by Program ( gives an author the extra permissions of a speaker , should they be required )
+
+Authors presenting their accepted papers are named speakers.
+
+# assignSectionToPerson() used by ( someone with high authority idk who ) ( not sure if we will need to know who attends what section , but we might need it )
+
+Participants to each section are: chair, speakers and listeners.
+
+# newSectionAttendance() used by Participant ( a chair , speaker or listener )
+# assignRoomToSection() used by Program ( not sure if this should be done , but maybe )
+
+In order to assign the most appropriate rooms for each section, in case of important conferences (having hundreds of participants) these are invited to specify which are the sections they intend to participate in.
+
+# checkChairIsSpeaker() used by Program
+
+A speaker cannot be the chair of the section in which she/he present his paper.
+
+# uploadPresentationContent() used by Speaker
+Usually, before the presentation, speakers upload on the conference site the content of the presentation by means of a .pdf or .ppt(x) file.
+
+
+
+
+
+
+

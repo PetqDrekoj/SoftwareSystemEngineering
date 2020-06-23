@@ -1,0 +1,40 @@
+
+Classes: - Conference
+	 - PC_members
+	 - Uploaded_papers
+	 - Bidding_process
+
+Attributes:
+
+1. Conference:  - name of the conference
+		- the interval in which the event will take place
+		- the "call for papers"
+		- deadlines
+		- the Program Committee
+		- the conference sections
+		- the program
+
+2. PC_members:  - account_name
+		- email
+		- name
+		- keywords
+		- topics
+
+3. Uploaded_papers: - section
+		    - pc_member
+		    - date
+		    - reviewers
+		    - review_grades
+
+4. Bidding_process: - date
+
+Functions: 
+
+1. Conference: - crud
+	       - is_accepted
+2. PC_members: - crud
+3. Uploaded_papers: - crud
+		    - review_mean
+		    - is_accepted
+4. Bidding_process: - crud
+		    - is_open
